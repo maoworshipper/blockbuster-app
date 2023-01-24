@@ -1,28 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import { Card } from "../../components/Card";
+import { useEffect, useRef } from "react";
+import { Card } from "../../components/Card/";
 import { Container } from "../../components/Container";
-
-interface Movie {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-}
+import { ErrorMessage } from "../../components/ErrorMessage";
+import { useFetch } from "../../hooks/useFetch";
+import { Movie } from "../../types/movies";
 
 const Home = () => {
-  const [data, setData] = useState([]); // [data, setData
   const dataFetchedRef = useRef(false);
-
-  const fetchData = () => {
-    axios
-      .get("http://www.omdbapi.com/?apikey=5eec5adc&s=man&r=json")
-      .then((response) => {
-        console.log(response.data.Search);
-        setData(response.data.Search);
-      });
-  };
+  const { data, error, fetchData } = useFetch();
 
   useEffect(() => {
     if (dataFetchedRef.current) return;
@@ -31,10 +16,22 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (error)
+    return (
+      <ErrorMessage
+        message="Error al obtener listado. Intente nuevamente."
+        showButton={true}
+        buttonMessage="Aceptar"
+        buttonAction={() => {
+          fetchData();
+        }}
+      />
+    );
+
   return (
     <>
       <Container>
-        {data.length > 0 &&
+        {data.length > 0 ?
           data.map((item: Movie) => (
             <Card
               key={item.imdbID}
@@ -44,7 +41,9 @@ const Home = () => {
               type={item.Type}
               poster={item.Poster}
             />
-          ))}
+          ))
+          : <h2>Cargando...</h2>
+        }
       </Container>
     </>
   );
