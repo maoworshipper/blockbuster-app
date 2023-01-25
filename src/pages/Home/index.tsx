@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/UI";
 import { Card } from "../../components/Card/";
 import { Container, ContainerChild } from "../../components/Container";
 import { ErrorMessage } from "../../components/ErrorMessage";
