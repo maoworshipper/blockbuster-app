@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AddedMovie } from "../../types/movies";
-import { Button } from "../Button";
 import { CartItem } from "./CartItem";
 import { InfoBox } from "./InfoBox";
+import { CartProps } from "./interfaces";
 import { PriceBox } from "./PriceBox";
 
 export const StyledCart = styled.div`
@@ -92,12 +93,26 @@ const Total = styled.div`
   outline: none;
 `;
 
-const CheckoutButton = styled(Button)`
+const CheckoutButton = styled(Link)`
   align-self: flex-end;
   width: 50%;
+  text-decoration: none;
+  text-align: center;
+  background-image: linear-gradient(176deg, #3d9dea, #4a4eee);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-image: linear-gradient(176deg, #4a4eee, #3d9dea);
+  }
 `;
 
-export const Cart = (cart : AddedMovie[]) => {
+export const Cart = ({ cartItems, onEliminateItem }: CartProps) => {
   return (
     <>
       <h1>Cart</h1>
@@ -106,23 +121,27 @@ export const Cart = (cart : AddedMovie[]) => {
           <h3>Poster</h3>
           <h3>Título/Categoría</h3>
           <h3>Cantidad</h3>
-          <h3>{cart.length} items</h3>
+          <h3>{cartItems.length} items</h3>
         </CartHeader>
-        {cart.map((item: AddedMovie) => (
-          <CartItem key={item.imdbID} {...item} />
+        {cartItems.map((item: AddedMovie) => (
+          <CartItem
+            key={item.imdbID}
+            {...item}
+            onEliminateItem={onEliminateItem}
+          />
         ))}
         <Separator />
         <CartFooter>
           <Total>
             <InfoBox>
               <h2>Sub-Total</h2>
-              <h3>{cart.length} items</h3>
+              <h3>{cartItems.length} items</h3>
             </InfoBox>
             <PriceBox>
               <span>$ 0.00</span>
             </PriceBox>
           </Total>
-          <CheckoutButton>Checkout</CheckoutButton>
+          <CheckoutButton to="/checkout">Checkout</CheckoutButton>
         </CartFooter>
       </StyledCart>
     </>

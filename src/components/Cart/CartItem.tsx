@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AddedMovie } from "../../types/movies";
+import { ItemCartMovie } from "../../types/movies";
 import { Button } from "../Button";
 import { InfoBox } from "./InfoBox";
 import { PriceBox } from "./PriceBox";
@@ -47,26 +47,24 @@ const RemoveButton = styled(Button)`
   background-color: transparent;
   padding: 0;
   font-size: 0.75rem;
-  color: #F44336;
+  color: #f44336;
   text-decoration: underline;
 
   &:hover {
     background-image: none;
     background-color: transparent;
-    color: #E57373;
+    color: #e57373;
   }
 `;
 
 export const CartItem = ({
   Title,
-  Year,
   imdbID,
-  Type,
   Poster,
   action,
-  date,
   quantity,
-}: AddedMovie) => {
+  onEliminateItem,
+}: ItemCartMovie) => {
   return (
     <>
       <StyledCartItem>
@@ -82,7 +80,7 @@ export const CartItem = ({
         </QuantityBox>
         <PriceBox>
           <span>Free</span>
-          <RemoveButton>Eliminar</RemoveButton>
+          <RemoveButton onClick={() => onEliminateItem(imdbID)}>Eliminar</RemoveButton>
         </PriceBox>
       </StyledCartItem>
     </>

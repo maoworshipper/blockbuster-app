@@ -11,3 +11,7 @@ export interface AddedMovie extends Movie {
   date: string;
   quantity: number;
 }
+
+export interface ItemCartMovie extends AddedMovie {
+  onEliminateItem: (id: string) => void;
+}
