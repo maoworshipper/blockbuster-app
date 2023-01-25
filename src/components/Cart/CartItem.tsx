@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemCartMovie } from "../../types/movies";
-import { Button } from "../Button";
+import { Button } from "../UI/Button";
 import { InfoBox } from "./InfoBox";
 import { PriceBox } from "./PriceBox";
 

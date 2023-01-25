@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { NavBar } from "../NavBar";
+import { CartButton, CartIcon, NavBar } from "../UI";
 
 export const Layout = () => {
   return (
@@ -7,8 +7,9 @@ export const Layout = () => {
       <NavBar>
         <h1>Blockbuster App</h1>
         <Link to="/">Home</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/checkout">Checkout</Link>
+        <CartButton to="/cart" title="Ver carrito">
+          <CartIcon />
+        </CartButton>
       </NavBar>
       <Outlet />
     </>

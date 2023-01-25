@@ -1,29 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AddedMovie } from "../../types/movies";
+import { Box } from "../UI";
 import { CartItem } from "./CartItem";
 import { InfoBox } from "./InfoBox";
 import { CartProps } from "./interfaces";
 import { PriceBox } from "./PriceBox";
-
-export const StyledCart = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  row-gap: 8px;
-  column-gap: 8px;
-  width: 100%;
-  height: 100%;
-  margin: 8px auto 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  outline: none;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-`;
 
 const CartHeader = styled.div`
   display: flex;
@@ -116,7 +98,7 @@ export const Cart = ({ cartItems, onEliminateItem }: CartProps) => {
   return (
     <>
       <h1>Cart</h1>
-      <StyledCart>
+      <Box>
         <CartHeader>
           <h3>Poster</h3>
           <h3>Título/Categoría</h3>
@@ -143,7 +125,7 @@ export const Cart = ({ cartItems, onEliminateItem }: CartProps) => {
           </Total>
           <CheckoutButton to="/checkout">Checkout</CheckoutButton>
         </CartFooter>
-      </StyledCart>
+      </Box>
     </>
   );
 };
