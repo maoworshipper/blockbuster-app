@@ -14,3 +14,16 @@ export const Container = styled.div`
     margin: 0 auto;
     padding: 1rem;
 }`;
+
+export const ContainerChild = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+    row-gap: 16px;
+    column-gap: 16px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}`;
