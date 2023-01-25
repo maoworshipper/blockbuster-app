@@ -6,9 +6,8 @@ export interface Movie {
   Poster: string;
 }
 
-export interface AddedMovie {
-  Title: string;
-  imdbID: string;
+export interface AddedMovie extends Movie {
+  action: string;
+  date: string;
   quantity: number;
-  date?: string;
 }
