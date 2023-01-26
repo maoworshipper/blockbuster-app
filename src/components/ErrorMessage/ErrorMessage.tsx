@@ -9,6 +9,7 @@ const ErrorWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+  margin-top: 60px;
   padding: 1rem;
   color: #ffffff;
   background-color: #f44336;
