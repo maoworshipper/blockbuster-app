@@ -10,7 +10,7 @@ export const useFetch = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://www.omdbapi.com/?apikey=5eec5adc&s=man&r=json"
+        "https://www.omdbapi.com/?apikey=5eec5adc&s=man&r=json"
       );
       response.data.Search.length > 0
         ? setData(orderArray(response.data.Search))
