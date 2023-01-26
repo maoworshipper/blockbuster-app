@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "../../components/UI";
 import { Card } from "../../components/Card/";
 import { Container, ContainerChild } from "../../components/Container";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { useFetch } from "../../hooks/useFetch";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Movie } from "../../types/movies";
-import { formatDate } from "../../utils/formatDate";
+import { useCart } from "../../hooks/useCart";
 
 const labels = {
   addToCart: "Agregar al carrito",
@@ -15,57 +14,18 @@ const labels = {
   buy: "Comprar",
   return: "<",
 };
-const storageName = "cart";
-const initialSelectedItem = {
-  id: "",
-  action: "",
-  date: formatDate(new Date()),
-  quantity: 1,
-};
 
 const Home = () => {
   const dataFetchedRef = useRef(false);
   const { data, error, fetchData } = useFetch();
-  const [selectedItem, setSelectedItem] = useState(initialSelectedItem);
-  const [cart, setCart] = useLocalStorage(storageName, []);
-
-  const handleAddToCart = (id: string) => {
-    setSelectedItem({ ...initialSelectedItem, id });
-  };
-
-  const cancelOrder = (id: string) => {
-    setSelectedItem(initialSelectedItem);
-    const movie = data.find((item: Movie) => item.imdbID === id);
-    if (movie) {
-      const newCart = cart.filter((item: Movie) => item.imdbID !== id);
-      setCart(newCart);
-    }
-  };
-
-  const handlerRequest = (action: string) => {
-    setSelectedItem({ ...selectedItem, action });
-  };
-
-  const updateCart = () => {
-    const movie = data.find((item: Movie) => item.imdbID === selectedItem.id);
-    if (movie) {
-      const newItem = {
-        ...movie,
-        action: selectedItem.action,
-        date: selectedItem.date,
-        quantity: selectedItem.quantity,
-      };
-      const filteredCart = cart.filter((item: Movie) => item.imdbID !== newItem.imdbID);
-      const newCart = [...filteredCart, newItem];
-      setCart(newCart);
-      setSelectedItem(initialSelectedItem);
-    }
-  };
-
-  const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSelectedItem({ ...selectedItem, [name]: value });
-  };
+  const {
+    selectedItem,
+    handleAddToCart,
+    cancelOrder,
+    handlerRequest,
+    updateCart,
+    handlerInputChange,
+  } = useCart(data);
 
   const showRequestFields = () => {
     return (
