@@ -103,7 +103,7 @@ export const Cart = ({ cartItems, onEliminateItem }: CartProps) => {
           <h3>Poster</h3>
           <h3>Título/Categoría</h3>
           <h3>Cantidad</h3>
-          <h3>{cartItems.length} items</h3>
+          <h3>Sub-Total</h3>
         </CartHeader>
         {cartItems.map((item: AddedMovie) => (
           <CartItem
@@ -116,7 +116,7 @@ export const Cart = ({ cartItems, onEliminateItem }: CartProps) => {
         <CartFooter>
           <Total>
             <InfoBox>
-              <h2>Sub-Total</h2>
+              <h2>Total</h2>
               <h3>{cartItems.length} items</h3>
             </InfoBox>
             <PriceBox>
