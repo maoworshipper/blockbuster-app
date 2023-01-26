@@ -12,7 +12,7 @@ export const Container = styled.div`
     height: 100%;
     max-width: 1200px;
     margin: 60px auto;
-    padding: 1rem;
+    padding: 1rem 0;
 }`;
 
 export const ContainerChild = styled.div`
