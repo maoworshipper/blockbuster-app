@@ -38,6 +38,25 @@ const CartHeader = styled.div`
     width: 20%;
     text-align: right;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.75rem;
+
+    h3:nth-child(1) {
+      width: 20%;
+    }
+
+    h3:nth-child(2) {
+      width: 40%;
+    }
+
+    h3:nth-child(3) {
+      width: 10%;
+    }
+
+    h3:nth-child(4) {
+      width: 30%;
+    }
 `;
 
 const CartFooter = styled.div`
@@ -51,6 +70,11 @@ const CartFooter = styled.div`
   margin-right: 16px;
   padding: 8px;
   font-size: 1rem;
+
+  @media screen and (max-width: 768px) {
+    width: 60%;
+    margin-right: 0;
+  }
 `;
 
 const Separator = styled.hr`
@@ -73,6 +97,11 @@ const Total = styled.div`
   padding: 8px;
   font-size: 1rem;
   outline: none;
+
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    margin: 0 auto;
+  }
 `;
 
 const CheckoutButton = styled(Link)`

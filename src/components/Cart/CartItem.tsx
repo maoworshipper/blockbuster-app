@@ -27,6 +27,10 @@ const ImageBox = styled.div`
     width: auto;
     height: 100px;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 20%;
+  }
 `;
 
 const QuantityBox = styled.div`
@@ -39,6 +43,12 @@ const QuantityBox = styled.div`
     font-size: 1.25rem;
     font-weight: 600;
     color: #202020;
+  }
+
+  @media screen and (max-width: 768px) {
+    span {
+      font-size: 1rem;
+    }
   }
 `;
 

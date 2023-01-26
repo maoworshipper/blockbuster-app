@@ -13,4 +13,12 @@ export const PriceBox = styled.div`
     font-weight: 800;
     color: #202020;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 30%;
+
+    span {
+      font-size: 1rem;
+    }
+  }
 `;

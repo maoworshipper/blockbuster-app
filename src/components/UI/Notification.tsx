@@ -10,4 +10,8 @@ export const Notification = styled.div`
   font-size: 1.15rem;
   font-weight: 500;
   border-radius: 4px;
+
+  @media screen and (max-width: 768px) {
+    width: 86%;
+  }
 `;

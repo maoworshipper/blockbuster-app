@@ -15,6 +15,11 @@ export const NavBar = styled.nav`
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 1rem;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
   a {
     color: #fff;
     text-decoration: none;
