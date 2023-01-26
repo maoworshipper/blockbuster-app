@@ -16,7 +16,7 @@ export const NavBar = styled.nav`
   letter-spacing: 1px;
   margin-bottom: 1rem;
 
-  h1 {
+  > h1 {
     font-size: 1.5rem;
   }
 
